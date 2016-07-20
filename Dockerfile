@@ -7,6 +7,7 @@ VOLUME ["/certs", "/etc/docker/registry"]
 
 ENV REGISTRY_SSL_CRT=false \
     REGISTRY_SSL_KEY=false \
+    AUTH_SSL_CRT=false \
     AUTH_REALM=false
 
 ENTRYPOINT ["/confd"]
