@@ -5,8 +5,14 @@ log:
 storage:
     cache:
         blobdescriptor: inmemory
-    filesystem:
-        rootdirectory: /var/lib/registry
+    swift:
+      username: "{{getenv "SWIFT_USERNAME"}}"
+      password: "{{getenv "SWIFT_PASSWORD"}}"
+      authurl: "{{getenv "SWIFT_AUTH_URL"}}"
+      tenant: "{{getenv "SWIFT_TENANT_NAME"}}"
+      container: "{{getenv "SWIFT_CONTAINER"}}"
+      region: "{{getenv "SWIFT_REGION"}}"
+      rootdirectory: /registry
 http:
     addr: :5000
     headers:
@@ -25,12 +31,3 @@ auth:
     service: "my.docker.registry"
     issuer: "Camptocamp Registry auth server"
     rootcertbundle: /certs/auth.crt
-storage:
-  swift:
-    username: "{{getenv "SWIFT_USERNAME"}}"
-    password: "{{getenv "SWIFT_PASSWORD"}}"
-    authurl: "{{getenv "SWIFT_AUTH_URL"}}"
-    tenant: "{{getenv "SWIFT_TENANT_NAME"}}"
-    container: "{{getenv "SWIFT_CONTAINER"}}"
-    region: "{{getenv "SWIFT_REGION"}}"
-    rootdirectory: /registry
