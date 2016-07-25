@@ -25,3 +25,12 @@ auth:
     service: "my.docker.registry"
     issuer: "Camptocamp Registry auth server"
     rootcertbundle: /certs/auth.crt
+storage:
+  swift:
+    username: "{{getenv "SWIFT_USERNAME"}}"
+    password: "{{getenv "SWIFT_PASSWORD"}}"
+    authurl: "{{getenv "SWIFT_AUTH_URL"}}"
+    tenant: "{{getenv "SWIFT_TENANT_NAME"}}"
+    container: "{{getenv "SWIFT_CONTAINER"}}"
+    region: "{{getenv "SWIFT_REGION"}}"
+    rootdirectory: /registry
